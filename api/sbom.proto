@@ -346,3 +346,17 @@ enum Purpose {
     SPECIFICATION = 27; // Specification purpose. (SPDX3.0)
     TEST = 28; // Test purpose. (SPDX3.0)
 }
+
+message Annotation {
+   AnnotationType type = 1;
+   string content_type = 2;
+   string subject = 3;
+   string statement = 4;
+   Person annotator = 5;
+
+   enum AnnotationType {
+        UNKNOWNs = 0;
+        REVIEW = 1;
+        OTHER = 2;
+   }
+}

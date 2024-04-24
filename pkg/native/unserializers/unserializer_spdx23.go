@@ -78,6 +78,16 @@ func (u *SPDX23) Unserialize(r io.Reader, _ *native.UnserializeOptions, _ interf
 		}
 	}
 
+	for _, a := range spdxDoc.Annotations {
+		na := sbom.Annotation{
+			Type:        0,
+			ContentType: "text/plain",
+			Subject:     string(a.AnnotationSPDXIdentifier.ElementRefID),
+			Statement:   a.AnnotationComment,
+			Annotator:   &sbom.Person{},
+		}
+	}
+
 	return bom, nil
 }
 
